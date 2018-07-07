@@ -1,2 +1,2 @@
 # GO_Learning
-GO语言学习
+# GO 学习
