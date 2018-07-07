@@ -26,15 +26,18 @@ func (m *Mytype) Sprint() string {
 
 func main() {
 	mytype := &Mytype{26, "LIUHAI"}
-	fmt.Println(mytype)
+	fmt.Println(reflect.TypeOf(mytype))
 	mtV := reflect.ValueOf(&mytype).Elem()
-	fmt.Println("Before:", mtV.MethodByName("Sprint").Call(nil)[0])
+	fmt.Println(reflect.TypeOf(mtV))
+	fmt.Printf("%#v\n",mtV)
 
+	fmt.Println("Before:", mtV.MethodByName("Sprint").Call(nil)[0])
 	params := make([]reflect.Value, 1)
 	params[0] = reflect.ValueOf(18)
 	mtV.MethodByName("SetI").Call(params)
 	params[0] = reflect.ValueOf("reflection test")
 	mtV.MethodByName("SetName").Call(params)
 	fmt.Println("After:", mtV.MethodByName("Sprint").Call(nil)[0])
+
 
 }
